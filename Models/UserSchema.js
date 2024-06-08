@@ -7,7 +7,6 @@ const UserSchema=new mongoose.Schema({
     token:String
 })
 
-
 const UserCollection=mongoose.model("User",UserSchema)
 
 export default UserCollection;
