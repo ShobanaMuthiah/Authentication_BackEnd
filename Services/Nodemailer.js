@@ -17,7 +17,7 @@ export const forgot=async(email,token)=>{
     from:process.env.SECRET_MAIL,
     to:email,
     subject:"password reset request",
-    text:`click on this link to generate your new pasword ${process.env.CLIENT_URL}/reset-password/${token}` 
+    text:`click on this link to generate your new pasword ${process.env.CLIENT_URL}/${token}` 
   }
   await transporter.sendMail(receiver)
  
