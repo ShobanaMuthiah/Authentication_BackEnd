@@ -8,6 +8,10 @@ dotenv.config();
 export const registerUser=async (req,res)=>{
     try {
         const {username,email,password}=req.body;
+        const mail=await UserCollection.findOne({email})
+        if(mail){
+            res.status(404).json({message:"mail ID has already exists"})
+        }   
         const hashpassword=await bcryptjs.hash(password,10)
         const user=new UserCollection({username,email,password:hashpassword})
 await user.save();
@@ -70,7 +74,7 @@ export const resetPassword=async (req,res)=>{
         const {token}=req.params;
         const {password}=req.body;
         if(!password){
-           res.status(400).json({message:"Enter password"})
+           res.status(400).json({message:"Insert password"})
         }
         const decode=jwt.verify(token,process.env.JWT_SECRET_KEY)
         
