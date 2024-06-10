@@ -25,7 +25,7 @@ export const loginUser=async (req,res)=>{
         const {email,password}=req.body;
         const user=await UserCollection.findOne({email})
         if(!user){
-            res.status(404).json({message:"mail Mismatched"})
+            res.status(404).json({message:"Invalid mail ID"})
         }         
        const passwordMatch=await bcryptjs.compareSync(password,user.password)
 if(!passwordMatch){
