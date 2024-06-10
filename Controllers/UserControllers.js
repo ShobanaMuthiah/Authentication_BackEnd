@@ -48,10 +48,6 @@ await user.save();
 export const forgotPassword=async (req,res)=>{
     try {
         const {email}=req.body;
-        if(!email)
-            {
-                return res.status(404).json({message:"Insert your mail ID"})
-            }
         const mailUser=await UserCollection.findOne({email});
         if(!mailUser){
             return res.status(404).json({message:"User not found"})

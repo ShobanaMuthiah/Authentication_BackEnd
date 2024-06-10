@@ -12,6 +12,7 @@ const transporter = nodemailer.createTransport({
     pass: process.env.SECRET_KEY,
   },
 });
+
 export const forgot=async(email,token)=>{
   const receiver={
     from:process.env.SECRET_MAIL,
