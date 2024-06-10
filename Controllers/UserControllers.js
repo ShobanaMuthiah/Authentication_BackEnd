@@ -10,7 +10,7 @@ export const registerUser=async (req,res)=>{
         const {username,email,password}=req.body;
         const mail=await UserCollection.findOne({email})
         if(mail){
-            res.status(404).json({message:"mail ID has already exists"})
+            res.status(404).json({message:"mail ID has already existed"})
         }   
         const hashpassword=await bcryptjs.hash(password,10)
         const user=new UserCollection({username,email,password:hashpassword})
